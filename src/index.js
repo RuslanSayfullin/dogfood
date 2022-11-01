@@ -7,8 +7,8 @@ class Card extends React.Component {
 		return(
 			<div className="card">
 				<div className="like">&lt;3</div>
-				^_^
-				<h6>Ня</h6>
+				{this.props.smile}
+				<h6>{this.props.text}</h6>
 			</div>
 		)
 	}
@@ -21,10 +21,10 @@ ReactDOM.render(
 		<div className="card">o_0</div>
 		<div className="card">^_^</div>
 		<div className="card">=(</div> */}
-		<Card/>
-		<Card/>
-		<Card/>
-		<Card/>
+		<Card smile="=)" text="Ы." />
+		<Card smile="0_o" text="Ooo..." />
+		<Card smile="^_^" text="МММ ня" />
+		<Card smile="=(" text="Уф" />
 	</div>,
 	document.querySelector("#root")
 )
