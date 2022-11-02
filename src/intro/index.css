@@ -5,11 +5,12 @@ body {
 .wrapper {
 	height: 100vh;
 	display: grid;
-	grid-template-columns: repeat(4, auto);
+	grid-template-columns: repeat(3, auto);
 	align-content: center;
 	justify-content: center;
+	gap: 20px;
 }
-.card{
+.card {
 	width: 100px;
 	height: 100px;
 	box-shadow: 0 0 5px 0 #222;
@@ -21,14 +22,14 @@ body {
 	font-size: 50px;
 	position: relative;
 }
-.card .like{
+.card .like {
 	position: absolute;
 	font-size: 20px;
 	transform: rotate(-90deg);
 	top: 4px;
 	right: 4px;
 }
-.card h6{
+.card h6 {
 	margin: 0;
 	font-size: 12px;
 }
