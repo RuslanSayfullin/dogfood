@@ -1,9 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import "./style.css";
+import React, { StrictMode } from 'react';
+import ReactDOM from 'react-dom/client';
+import AppMUI from './components/AppMUI/app-mui';
+import './index.css';
+// import 'antd/dist/antd.css';
+// import App from './components/App/app';
+// import AppAnt from './components/AppAnt/app-ant';
 
-ReactDOM.render(
-	<App/>,
-	document.querySelector("#root")
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+        <AppMUI/>
 );
+
