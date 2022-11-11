@@ -42,10 +42,6 @@ function App() {
         </>
       </Header>
       <main className='content container'>
-        {/* <h1 style={headerStyle} className="title">Стилизованный заголовок</h1> */}
-        <Button type="primary">Купить</Button>
-        <Button type="secondary">Подробнее</Button>
-
       <SeachInfo searchCount={cards.length} searchText={searchQuery}/>
        <Sort/>
         <div className='content__cards'>
