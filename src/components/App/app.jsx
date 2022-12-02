@@ -4,7 +4,6 @@ import Header from '../Header/header';
 import Logo from '../Logo/logo';
 import Search from '../Search/search';
 import './index.css';
-// import data from '../../assets/data.json';
 import SeachInfo from '../SeachInfo';
 import api from '../../utils/api';
 import useDebounce from '../../hooks/useDebounce';
