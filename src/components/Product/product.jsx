@@ -5,23 +5,28 @@ import truck from './img/truck.svg';
 import quality from './img/quality.svg';
 
 import { calcDiscountPrice, isLiked, createMarkup } from '../../utils/product';
-import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { UserContext } from '../../context/userContext';
+import { useMemo } from 'react';
 import { ContentHeader } from '../ContentHeader/content-header';
+import { Rating } from '../Rating/rating';
+import { FormReview } from '../FormReview/form-review';
+import { useSelector } from 'react-redux';
 
 export const Product = ({ onProductLike, pictures, likes = [], reviews, tags, name, price, discount, description, wight, _id}) => {
-    const {user: currentUser} = useContext(UserContext);
 
-    const navigate = useNavigate()
+    const currentUser = useSelector(state => state.user.data);
+
     const discount_price = calcDiscountPrice(price, discount);
     const isLike = isLiked(likes, currentUser?._id);
     const desctiptionHTML = createMarkup(description);
+
+    const ratingCount = useMemo(() => Math.round(reviews.reduce((acc, r) => acc = acc + r.rating, 0)/reviews.length), [reviews])
+
     return (
     <>
         <ContentHeader title={name}>
             <div>
-                <span>Артикул:</span> <b>2388907</b>
+                <span>Артикул:</span>
+                <Rating rating={ratingCount}/> {reviews.length} отзыв
             </div>
         </ContentHeader>
         
@@ -94,6 +99,10 @@ export const Product = ({ onProductLike, pictures, likes = [], reviews, tags, na
 				</div>
 
         </div>
+        <ul>
+            {reviews.map(reviewData => <li key={reviewData._id}>{reviewData.text} <Rating rating={reviewData.rating}/></li>)}
+        </ul>
+        <FormReview title={`Отзыв о товаре ${name}`} productId={_id}/>
     </>
     )
 }

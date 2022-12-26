@@ -1,26 +1,28 @@
 import cn from 'classnames';
-import { useContext } from 'react';
+import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { CardContext } from '../../context/cardContext';
-import { UserContext } from '../../context/userContext';
 import { calcDiscountPrice, isLiked } from '../../utils/product';
 import ContentLoader from "react-content-loader";
 
 import "./index.css";
 import {ReactComponent as Save} from "./save.svg";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchChangeLikeProduct } from '../../storage/products/productsSlice';
 
 
 const Card = ({ name, price, _id, likes, discount, wight, description, pictures, tags }) => {
+	const dispatch = useDispatch();
+	const currentUser = useSelector(state => state.user.data);
+	const isLoading = useSelector(state => state.user.loading);
 
-	const {user: currentUser, isLoading} = useContext(UserContext);
-	const { handleLike: onProductLike} = useContext(CardContext);
+	const handleLikeClick = useCallback(() => {
+		return dispatch(fetchChangeLikeProduct({_id, likes}))
+	  }, [dispatch, _id, likes])
+
+	  
 	const discount_price = calcDiscountPrice(price, discount);
 	const liked = isLiked(likes, currentUser?._id)
 
-
-	function handleLikeClick(){
-		onProductLike({_id, likes})
-	}
 
 	return (
 		<>

@@ -1,9 +1,30 @@
 import cn from "classnames";
+import { useDispatch, useSelector } from "react-redux";
+import { sortedProducts } from "../../storage/products/productsSlice";
 import "./index.css";
-const Sort = ({currentSort, tabs = [], onChangeSort}) => {
+const tabs = [
+    {
+      id: "cheap",
+      title: "Сначала дешёвые",
+    },
+    {
+      id: "low",
+      title: "Сначала дорогие",
+    },
+    {
+      id: "sale",
+      title: "По скидке",
+    },
+    ];
+
+const Sort = () => {
+	const dispatch = useDispatch();
+    const {currentSort } = useSelector(state => state.products);
+
 	const handleClick = (e, tab) => {
 		e.preventDefault(); 
-		onChangeSort(tab.id)
+		console.log(tab);
+		dispatch(sortedProducts(tab.id))
 	}
 	return (
 		<div className="sort content__sort">
