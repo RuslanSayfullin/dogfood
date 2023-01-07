@@ -14,7 +14,7 @@ function Search({onSubmit: propsOnSubmit, onInput}) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     propsOnSubmit(inputText)
-    // setInputText("")
+    // setInputText("") Задать текст для ввода ("")
   }
 
   const handleClearInput = (e) => {
@@ -25,7 +25,7 @@ function Search({onSubmit: propsOnSubmit, onInput}) {
 
   return (
    <form className="search" onSubmit={handleFormSubmit}>
-        <input type="text" className='search__input' ref={inputRef} placeholder='Поиск' onInput={handleInput}/>
+        <input type="text" className='search__input' ref={inputRef} placeholder='Искать' onInput={handleInput}/>
         <button type='button' className='search__btn'>
           {inputText && <CloseIcon onClick={handleClearInput} className='search__icon-clear'/>}
           {inputText && <SearchIcon onClick={handleFormSubmit} className='search__icon'/>}

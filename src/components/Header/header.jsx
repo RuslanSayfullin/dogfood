@@ -35,7 +35,7 @@ function Header({children, user, onUpdateUser}) {
 
             <Link to='/profile' className={s.iconsMenuItem}>
               <ProfileIcon/>
-              Максим
+              Руслан
             </Link>
 
             <Link to='/' className={s.iconsMenuItem}>
