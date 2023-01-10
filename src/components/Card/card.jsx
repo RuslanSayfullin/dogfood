@@ -63,7 +63,7 @@ const Card = ({ name, price, _id, likes, discount, wight, description, pictures,
 							</div>
 						</Link>
 						<a href="#" className="card__cart btn btn_type_primary">
-							В корзину
+							Добавить в корзину
 						</a>
 					</div>
 			}
